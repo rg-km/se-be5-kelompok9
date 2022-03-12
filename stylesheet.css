@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Fira+Sans+Condensed&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 
 /* .board-wrapped {
     background-color: yellow;
@@ -9,9 +9,9 @@
 .bg-board {
     background-color: rgb(26, 194, 11);
     position: relative;
-    left: 35%;
-    /* top: 35%; */
-    width: 450px;
+    left: 34.5%;
+    top: 35%;
+    width: 470px;
     height: 550px;
 }
 
@@ -20,6 +20,8 @@
     margin-top: 25px;
     color: black;
     font-size: 25px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bolder;
     left: 41%;
 }
 
@@ -32,12 +34,16 @@
 
 .score-wrapped canvas {
     position: absolute;
-    left: 75%;
+    top: -10px;
+    left: 86%;
+    height: 130px;
+    width: 250px;
+    text-align: center;
 }
 
 .score-wrapped p{
     position: absolute;
-    left: 75%;
+    left: 73%;
     color: black;
     font-size: 25px;
 }
@@ -45,12 +51,12 @@
 #snakeBoard {
     background-color: rgb(30, 85, 25);
     position: relative;
-    left: 5%;
-    top: 20%;
+    left: 7%;
+    top: 22%;
 }
 
 .speed p{
     font-size: 25px;
-    top: 8%;
-    left: 2%;
+    top: 12%;
+    left: 3%;
 }
