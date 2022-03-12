@@ -14,13 +14,16 @@ ULER_IMAGE.src = "uler.jpeg";
 const BADAN_ULER_IMAGE = new Image(); 
 BADAN_ULER_IMAGE.src = "badanUlar.jpg";
 
+const LIFE_IMAGE = new Image();
+LIFE_IMAGE.src = "Heart.jpg"
+
 const DIRECTION = {
     LEFT: 0,
     RIGHT: 1,
     UP: 2,
     DOWN: 3,
 }
-const MOVE_INTERVAL = 100; 
+let MOVE_INTERVAL = 100; 
 let NYAWA = 4;
 
 function initPosition() {
@@ -54,11 +57,9 @@ function initSnake(color) {
 let snake1 = initSnake("purple");
 
 let apple1 = { 
-    color: "red",
     position: initPosition(),
 }
 let apple3 = { 
-    color: "red",
     position: initPosition(),
     bonus:true, 
 }
@@ -91,6 +92,11 @@ function drawImage(ctx, x, y, Image) {
     ctx.drawImage(Image, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
 }
 
+function drawLife(ctx, x, y, Image) {
+    for(let i = 0; i < NYAWA; i++){
+        ctx.drawImage(Image, x + (i * CELL_SIZE), y, CELL_SIZE, CELL_SIZE)
+    }
+}
 function draw() {
     setInterval(function() {
         let snakeCanvas = document.getElementById("snakeBoard");
@@ -105,6 +111,7 @@ function draw() {
         drawImage(ctx, apple1.position.x, apple1.position.y, APPLE_IMAGE);
         drawImage(ctx, apple3.position.x, apple3.position.y, APPLE_EMAS_IMAGE);
 
+        drawLife(ctx, 0, 0, LIFE_IMAGE);
         drawScore(snake1);
     }, REDRAW_INTERVAL);
 }
@@ -178,8 +185,8 @@ function checkCollision(snakes) {
         }
     }
     if (isCollide) {
-        alert("Game over");
-        snake1 = initSnake("purple");
+        
+        
     }
     return isCollide;
 }
@@ -200,15 +207,34 @@ function move(snake) {
             break;
     }
     moveBody(snake);
-    if (!checkCollision(snake1)) {
+    if (!checkCollision([snake])) {
         setTimeout(function() {
             move(snake);
         }, MOVE_INTERVAL);
     } else {
+        NYAWA -= 1;
+        if (NYAWA > 0) {
+            resetGame();
+        }
+        else {
+            restartGame();
+        }
         initGame();
+
     }
 }
 
+function resetGame() {
+    const score = snake1.score;
+    snake1 = initSnake("purple");
+    snake1.score = score;
+}
+function restartGame() {
+    snake1 = initSnake("purple");
+    alert('Game Over')
+    NYAWA = 4;
+    MOVE_INTERVAL = 100;
+}
 function moveBody(snake) {
     snake.body.unshift({ x: snake.head.x, y: snake.head.y });
     snake.body.pop();
