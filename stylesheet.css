@@ -12,15 +12,22 @@
     left: 35%;
     /* top: 35%; */
     width: 450px;
-    height: 520px;
+    height: 550px;
 }
 
 .bg-board p{
     position: absolute;
-    margin-top: 20px;
+    margin-top: 25px;
     color: black;
     font-size: 25px;
-    left: 45%;
+    left: 41%;
+}
+
+.bg-board img{
+    width: 30px;
+    position: absolute;
+    top: 5%;
+    left: 5%;
 }
 
 .score-wrapped canvas {
@@ -39,6 +46,11 @@
     background-color: rgb(30, 85, 25);
     position: relative;
     left: 5%;
-    top: 18%;
+    top: 20%;
 }
 
+.speed p{
+    font-size: 25px;
+    top: 8%;
+    left: 2%;
+}
