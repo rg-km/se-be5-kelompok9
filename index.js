@@ -11,6 +11,8 @@ APPLE_EMAS_IMAGE.src = "apple-emas.jpg";
 
 const ULER_IMAGE = new Image(); 
 ULER_IMAGE.src = "uler.jpeg";
+const BADAN_ULER_IMAGE = new Image(); 
+BADAN_ULER_IMAGE.src = "badanUlar.jpg";
 
 const DIRECTION = {
     LEFT: 0,
@@ -19,6 +21,7 @@ const DIRECTION = {
     DOWN: 3,
 }
 const MOVE_INTERVAL = 100; 
+let NYAWA = 4;
 
 function initPosition() {
     return {
@@ -54,11 +57,6 @@ let apple1 = {
     color: "red",
     position: initPosition(),
 }
-let apple2 = { 
-    color: "red",
-    position: initPosition(),
-}
-
 let apple3 = { 
     color: "red",
     position: initPosition(),
@@ -89,7 +87,7 @@ function drawScore(snake) {
     scoreCtx.fillText(snake.score, 10, scoreCanvas.scrollHeight / 2);
 }
 
-function drawImage(ctx, x, y, Image) { //drawImage
+function drawImage(ctx, x, y, Image) {
     ctx.drawImage(Image, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
 }
 
@@ -102,7 +100,7 @@ function draw() {
         
         drawImage(ctx, snake1.head.x, snake1.head.y, ULER_IMAGE);
         for (let i = 1; i < snake1.body.length; i++) {
-            drawImage(ctx, snake1.body[i].x, snake1.body[i].y, ULER_IMAGE);
+            drawImage(ctx, snake1.body[i].x, snake1.body[i].y, BADAN_ULER_IMAGE);
         }
         drawImage(ctx, apple1.position.x, apple1.position.y, APPLE_IMAGE);
         drawImage(ctx, apple3.position.x, apple3.position.y, APPLE_EMAS_IMAGE);
@@ -133,7 +131,6 @@ function eat(snake, apple) {
             snake.score = snake.score + 5 
         }
         else {
-
             snake.score++;
         }
         snake.body.push({x: snake.head.x, y: snake.head.y});
@@ -145,7 +142,6 @@ function moveLeft(snake) {
     teleport(snake);
     eat(snake, apple1);
     eat(snake, apple3);
-    
 }
 
 function moveRight(snake) {
