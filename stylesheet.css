@@ -1,0 +1,44 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Fira+Sans+Condensed&display=swap'); */
+
+/* .board-wrapped {
+    background-color: yellow;
+    width: 451px; 
+    height: 521px;
+} */
+
+.bg-board {
+    background-color: rgb(26, 194, 11);
+    position: relative;
+    left: 35%;
+    /* top: 35%; */
+    width: 450px;
+    height: 520px;
+}
+
+.bg-board p{
+    position: absolute;
+    margin-top: 20px;
+    color: black;
+    font-size: 25px;
+    left: 45%;
+}
+
+.score-wrapped canvas {
+    position: absolute;
+    left: 75%;
+}
+
+.score-wrapped p{
+    position: absolute;
+    left: 75%;
+    color: black;
+    font-size: 25px;
+}
+
+#snakeBoard {
+    background-color: rgb(30, 85, 25);
+    position: relative;
+    left: 5%;
+    top: 18%;
+}
+
