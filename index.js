@@ -23,10 +23,12 @@ const DIRECTION = {
     DOWN: 3,
 }
 let MOVE_INTERVAL = 100; 
+
 let NYAWA = 4;
 let LEVEL = 1;
 
 const level_1 = [1, 1, 1, 1, 1, 1, 1]
+
 
 function initPosition() {
     return {
@@ -119,52 +121,40 @@ function draw() {
             drawImage(ctx, snake1.body[i].x, snake1.body[i].y, BADAN_ULER_IMAGE);
         }
         drawImage(ctx, apple1.position.x, apple1.position.y, APPLE_IMAGE);
-
         drawImage(ctx, apple3.position.x, apple3.position.y, APPLE_IMAGE);
-        drawImage(ctx, heart1.position.x, heart1.position.y, LIFE_IMAGE);
         
-        drawLife(ctx, 0, 0, LIFE_IMAGE);
-        drawScore(snake1);
-        updateSpeed();
-        
-        if (LEVEL === 1 ) {
-            const position = { x : 10, y : 10};
-            
-            for (let i = 0; i < level_1.length; i++) {
-                drawCell(ctx, position.x + i, 10, 'black');   
-            }
-            
-        } else if (LEVEL === 2) {
-            
-        } else if (LEVEL === 3) {
 
-        } else if (LEVEL === 4) {
-            
-        } else if (LEVEL === 5) {
-            
+        let UIrenderer = document.getElementById('nyawa')
+        let renderer = UIrenderer.getContext('2d');
+        drawLife(renderer, 0, 0, LIFE_IMAGE);
+        drawScore(snake1);
+        if(isPrime(snake1.score)){
+            drawImage(ctx, heart1.position.x, heart1.position.y, LIFE_IMAGE);
         }
     }, REDRAW_INTERVAL);
 }
-// function isPrime(num) {
 
-//      if (num === 2) {
-//        return true;
-//        } else if (num > 1) {
-//          for (var i = 2; i < num; i++) {
+function isPrime(num) {
+
+     if (num === 2) {
+       return true;
+       } else if (num > 1) {
+         for (var i = 2; i < num; i++) {
   
-//         if (num % i !== 0) {
-//           return true;
-//         } else if (num === i * i) {
-//           return false
-//         } else {
-//           return false;
-//         }
-//       }
-//     } else {
-//       return false;
-//     }
+        if (num % i !== 0) {
+          return true;
+        } else if (num === i * i) {
+          return false
+        } else {
+          return false;
+        }
+      }
+    } else {
+      return false;
+    }
   
-//   }
+  }
+
 function teleport(snake) {
     if (snake.head.x < 0) {
         snake.head.x = CANVAS_SIZE / CELL_SIZE - 1;
