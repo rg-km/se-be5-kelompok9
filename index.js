@@ -112,7 +112,7 @@ function draw() {
         }
         drawImage(ctx, apple1.position.x, apple1.position.y, APPLE_IMAGE);
 
-        drawImage(ctx, apple3.position.x, apple3.position.y, APPLE_EMAS_IMAGE);
+        drawImage(ctx, apple3.position.x, apple3.position.y, APPLE_IMAGE);
         drawImage(ctx, heart1.position.x, heart1.position.y, LIFE_IMAGE);
 
         drawLife(ctx, 0, 0, LIFE_IMAGE);
