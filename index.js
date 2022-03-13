@@ -119,26 +119,26 @@ function draw() {
         drawScore(snake1);
     }, REDRAW_INTERVAL);
 }
-    function isPrime(num) {
+// function isPrime(num) {
 
-     if (num === 2) {
-       return true;
-       } else if (num > 1) {
-         for (var i = 2; i < num; i++) {
+//      if (num === 2) {
+//        return true;
+//        } else if (num > 1) {
+//          for (var i = 2; i < num; i++) {
   
-        if (num % i !== 0) {
-          return true;
-        } else if (num === i * i) {
-          return false
-        } else {
-          return false;
-        }
-      }
-    } else {
-      return false;
-    }
+//         if (num % i !== 0) {
+//           return true;
+//         } else if (num === i * i) {
+//           return false
+//         } else {
+//           return false;
+//         }
+//       }
+//     } else {
+//       return false;
+//     }
   
-  }
+//   }
 function teleport(snake) {
     if (snake.head.x < 0) {
         snake.head.x = CANVAS_SIZE / CELL_SIZE - 1;
