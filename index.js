@@ -24,6 +24,9 @@ const DIRECTION = {
 }
 let MOVE_INTERVAL = 100; 
 let NYAWA = 4;
+let LEVEL = 1;
+
+const level_1 = [1, 1, 1, 1, 1, 1, 1]
 
 function initPosition() {
     return {
@@ -99,6 +102,11 @@ function drawLife(ctx, x, y, Image) {
         ctx.drawImage(Image, x + (i * CELL_SIZE), y, CELL_SIZE, CELL_SIZE)
     }
 }
+function updateSpeed() {
+    const speedParagraph = document.getElementById('speed-show');
+    speedParagraph.innerText = `Speed : ${MOVE_INTERVAL} ms`;
+}
+
 function draw() {
     setInterval(function() {
         let snakeCanvas = document.getElementById("snakeBoard");
@@ -114,9 +122,27 @@ function draw() {
 
         drawImage(ctx, apple3.position.x, apple3.position.y, APPLE_IMAGE);
         drawImage(ctx, heart1.position.x, heart1.position.y, LIFE_IMAGE);
-
+        
         drawLife(ctx, 0, 0, LIFE_IMAGE);
         drawScore(snake1);
+        updateSpeed();
+        
+        if (LEVEL === 1 ) {
+            const position = { x : 10, y : 10};
+            
+            for (let i = 0; i < level_1.length; i++) {
+                drawCell(ctx, position.x + i, 10, 'black');   
+            }
+            
+        } else if (LEVEL === 2) {
+            
+        } else if (LEVEL === 3) {
+
+        } else if (LEVEL === 4) {
+            
+        } else if (LEVEL === 5) {
+            
+        }
     }, REDRAW_INTERVAL);
 }
 // function isPrime(num) {
