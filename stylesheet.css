@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+/* .board-wrapped {
+    background-color: yellow;
+    width: 451px; 
+    height: 521px;
+} */
+
+.bg-board {
+    background-color: rgb(26, 194, 11);
+    position: relative;
+    left: 34.5%;
+    top: 35%;
+    width: 470px;
+    height: 550px;
+}
+
+.bg-board p{
+    position: absolute;
+    margin-top: 25px;
+    color: black;
+    font-size: 25px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bolder;
+    left: 41%;
+}
+
+.bg-board img{
+    width: 30px;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+.score-wrapped canvas {
+    position: absolute;
+    top: -10px;
+    left: 86%;
+    height: 130px;
+    width: 250px;
+    text-align: center;
+}
+
+.score-wrapped p{
+    position: absolute;
+    left: 73%;
+    color: black;
+    font-size: 25px;
+}
+
+#snakeBoard {
+    background-color: rgb(30, 85, 25);
+    position: relative;
+    left: 7%;
+    top: 22%;
+}
+
+.speed p{
+    font-size: 25px;
+    top: 12%;
+    left: 3%;
+}

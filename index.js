@@ -1,5 +1,5 @@
 const CELL_SIZE = 20;
-const CANVAS_SIZE = 600; 
+const CANVAS_SIZE = 400; 
 const REDRAW_INTERVAL = 50;
 const WIDTH = CANVAS_SIZE / CELL_SIZE;
 const HEIGHT = CANVAS_SIZE / CELL_SIZE;
@@ -16,6 +16,8 @@ BADAN_ULER_IMAGE.src = "badanUlar.jpg";
 
 const LIFE_IMAGE = new Image();
 LIFE_IMAGE.src = "Heart.jpg"
+
+// var SOUND_EFFECT;
 
 const DIRECTION = {
     LEFT: 0,
@@ -134,6 +136,7 @@ function teleport(snake) {
 function eat(snake, apple) {
     if (snake.head.x == apple.position.x && snake.head.y == apple.position.y) {
         apple.position = initPosition();
+        // SOUND_EFFECT = new sound("game-over.mp3")
         if (apple.bonus) {
             snake.score = snake.score + 5 
         }
