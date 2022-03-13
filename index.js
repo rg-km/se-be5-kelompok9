@@ -4,20 +4,15 @@ const REDRAW_INTERVAL = 50;
 const WIDTH = CANVAS_SIZE / CELL_SIZE;
 const HEIGHT = CANVAS_SIZE / CELL_SIZE;
 const APPLE_IMAGE = new Image(); 
-APPLE_IMAGE.src = "apple.png";
-
-const APPLE_EMAS_IMAGE = new Image(); 
-APPLE_EMAS_IMAGE.src = "apple-emas.jpg";
+APPLE_IMAGE.src = "apple1.png";
 
 const ULER_IMAGE = new Image(); 
-ULER_IMAGE.src = "uler.jpeg";
+ULER_IMAGE.src = "head_snake.png";
 const BADAN_ULER_IMAGE = new Image(); 
-BADAN_ULER_IMAGE.src = "badanUlar.jpg";
+BADAN_ULER_IMAGE.src = "body_snake.png";
 
 const LIFE_IMAGE = new Image();
-LIFE_IMAGE.src = "Heart.jpg"
-
-// var SOUND_EFFECT;
+LIFE_IMAGE.src = "heart.png"
 
 const DIRECTION = {
     LEFT: 0,
@@ -63,7 +58,6 @@ let apple1 = {
 }
 let apple3 = { 
     position: initPosition(),
-    bonus:true, 
 }
 
 function drawCell(ctx, x, y, color) {
@@ -111,7 +105,7 @@ function draw() {
             drawImage(ctx, snake1.body[i].x, snake1.body[i].y, BADAN_ULER_IMAGE);
         }
         drawImage(ctx, apple1.position.x, apple1.position.y, APPLE_IMAGE);
-        drawImage(ctx, apple3.position.x, apple3.position.y, APPLE_EMAS_IMAGE);
+        drawImage(ctx, apple3.position.x, apple3.position.y, APPLE_IMAGE);
 
         drawLife(ctx, 0, 0, LIFE_IMAGE);
         drawScore(snake1);
