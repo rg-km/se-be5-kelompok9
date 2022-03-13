@@ -14,6 +14,8 @@ BADAN_ULER_IMAGE.src = "body_snake.png";
 const LIFE_IMAGE = new Image();
 LIFE_IMAGE.src = "heart.png"
 
+const game_over = new Audio("game-over.mp3");
+
 const DIRECTION = {
     LEFT: 0,
     RIGHT: 1,
@@ -130,7 +132,7 @@ function teleport(snake) {
 function eat(snake, apple) {
     if (snake.head.x == apple.position.x && snake.head.y == apple.position.y) {
         apple.position = initPosition();
-        // SOUND_EFFECT = new sound("game-over.mp3")
+        
         if (apple.bonus) {
             snake.score = snake.score + 5 
         }
@@ -210,10 +212,12 @@ function move(snake) {
         }, MOVE_INTERVAL);
     } else {
         NYAWA -= 1;
+        
         if (NYAWA > 0) {
             resetGame();
         }
         else {
+            game_over.play();
             restartGame();
         }
         initGame();
