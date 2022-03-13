@@ -43,9 +43,6 @@
     height: 40px;
     top: 16%;
     left: 7%;
-    background-image: url(heart.png);
-    background-repeat: no-repeat;
-    background-size: 30px;
 }
 
 .score-wrapped canvas {
