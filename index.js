@@ -1,5 +1,5 @@
 const CELL_SIZE = 20;
-const CANVAS_SIZE = 600; 
+const CANVAS_SIZE = 400; 
 const REDRAW_INTERVAL = 50;
 const WIDTH = CANVAS_SIZE / CELL_SIZE;
 const HEIGHT = CANVAS_SIZE / CELL_SIZE;
@@ -11,6 +11,8 @@ APPLE_EMAS_IMAGE.src = "apple-emas.jpg";
 
 const ULER_IMAGE = new Image(); 
 ULER_IMAGE.src = "uler.jpeg";
+
+// var SOUND_EFFECT;
 
 const DIRECTION = {
     LEFT: 0,
@@ -129,6 +131,7 @@ function teleport(snake) {
 function eat(snake, apple) {
     if (snake.head.x == apple.position.x && snake.head.y == apple.position.y) {
         apple.position = initPosition();
+        // SOUND_EFFECT = new sound("game-over.mp3")
         if (apple.bonus) {
             snake.score = snake.score + 5 
         }
