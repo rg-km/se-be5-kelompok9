@@ -23,7 +23,12 @@ const DIRECTION = {
     DOWN: 3,
 }
 let MOVE_INTERVAL = 100; 
-let NYAWA = 2;
+
+let NYAWA = 4;
+let LEVEL = 1;
+
+const level_1 = [1, 1, 1, 1, 1, 1, 1]
+
 
 function initPosition() {
     return {
@@ -99,6 +104,11 @@ function drawLife(ctx, x, y, Image) {
         ctx.drawImage(Image, x + (i * CELL_SIZE), y, CELL_SIZE, CELL_SIZE)
     }
 }
+function updateSpeed() {
+    const speedParagraph = document.getElementById('speed-show');
+    speedParagraph.innerText = `Speed : ${MOVE_INTERVAL} ms`;
+}
+
 function draw() {
     setInterval(function() {
         let snakeCanvas = document.getElementById("snakeBoard");
