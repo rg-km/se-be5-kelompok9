@@ -25,11 +25,11 @@
     left: 41%;
 }
 
-.bg-board img{
-    width: 30px;
+.bg-board #nyawa{
+    width: 25px;
     position: absolute;
-    top: 5%;
-    left: 5%;
+    top: 23%;
+    left: 8%;
 }
 
 .score-wrapped canvas {
