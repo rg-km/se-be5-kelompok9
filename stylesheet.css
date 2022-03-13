@@ -35,13 +35,10 @@
 #nyawa{
     /* background-color: aqua; */
     position: absolute;
-    width: 130px;
-    height: 40px;
+    width: 400px;
+    height: 200px;
     top: 16%;
     left: 7%;
-    background-image: url(heart.png);
-    background-repeat: no-repeat;
-    background-size: 30px;
 }
 
 .score-wrapped canvas {

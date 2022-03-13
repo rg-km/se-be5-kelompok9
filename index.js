@@ -23,7 +23,7 @@ const DIRECTION = {
     DOWN: 3,
 }
 let MOVE_INTERVAL = 100; 
-let NYAWA = 4;
+let NYAWA = 2;
 
 function initPosition() {
     return {
@@ -115,7 +115,9 @@ function draw() {
         drawImage(ctx, apple3.position.x, apple3.position.y, APPLE_IMAGE);
         drawImage(ctx, heart1.position.x, heart1.position.y, LIFE_IMAGE);
 
-        drawLife(ctx, 0, 0, LIFE_IMAGE);
+        let UIrenderer = document.getElementById('nyawa')
+        let renderer = UIrenderer.getContext('2d');
+        drawLife(renderer, 0, 0, LIFE_IMAGE);
         drawScore(snake1);
     }, REDRAW_INTERVAL);
 }
