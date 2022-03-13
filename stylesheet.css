@@ -22,7 +22,11 @@
     font-size: 25px;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bolder;
-    left: 41%;
+    left: 40%;
+}
+
+#level-title{
+    top: 7%;
 }
 
 /* .hati {
