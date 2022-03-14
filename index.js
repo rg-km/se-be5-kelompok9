@@ -16,6 +16,9 @@ LIFE_IMAGE.src = "heart.png"
 
 const game_over = new Audio("game-over.mp3");
 
+const life_size = 100;
+const life_count = 4;
+
 const DIRECTION = {
     LEFT: 0,
     RIGHT: 1,
@@ -100,6 +103,8 @@ function drawImage(ctx, x, y, Image) {
 }
 
 function drawLife(ctx, x, y, Image) {
+    ctx.fillStyle = "#1ccc24"
+    ctx.fillRect(0, 0, life_size, life_size);
     for(let i = 0; i < NYAWA; i++){
         ctx.drawImage(Image, x + (i * CELL_SIZE), y, CELL_SIZE, CELL_SIZE)
     }
@@ -123,7 +128,7 @@ function draw() {
         drawImage(ctx, apple1.position.x, apple1.position.y, APPLE_IMAGE);
         drawImage(ctx, apple3.position.x, apple3.position.y, APPLE_IMAGE);
         
-
+        updateSpeed();
         let UIrenderer = document.getElementById('nyawa')
         let renderer = UIrenderer.getContext('2d');
         drawLife(renderer, 0, 0, LIFE_IMAGE);
