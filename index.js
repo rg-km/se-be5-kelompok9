@@ -28,7 +28,7 @@ const DIRECTION = {
 let MOVE_INTERVAL = 100; 
 
 let NYAWA = 4;
-let LEVEL = 1;
+let LEVEL = 0;
 
 const level_1 = { 
     startPos : { x: 5, y : 4}, 
@@ -164,6 +164,10 @@ function updateSpeed() {
     const speedParagraph = document.getElementById('speed-show');
     speedParagraph.innerText = `Speed : ${MOVE_INTERVAL} ms`;
 }
+function drawLevelTitle() {
+    const levelTitle = document.getElementById("level-title");
+    levelTitle.innerText = `LEVEL : ${LEVEL}`
+}
 
 function draw() {
     setInterval(function() {
@@ -184,6 +188,7 @@ function draw() {
         let renderer = UIrenderer.getContext('2d');
         drawLife(renderer, 0, 0, LIFE_IMAGE);
         drawScore(snake1);
+        drawLevelTitle();
         if(isPrime(snake1.score)){
             drawImage(ctx, heart1.position.x, heart1.position.y, LIFE_IMAGE);
         }
