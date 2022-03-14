@@ -30,8 +30,59 @@ let MOVE_INTERVAL = 100;
 let NYAWA = 4;
 let LEVEL = 1;
 
-const level_1 = [1, 1, 1, 1, 1, 1, 1]
+const level_1 = { 
+    startPos : { x: 5, y : 4}, 
+    wall : [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+}
 
+const level_2 = { 
+    startPos : { x: 3, y : 4}, 
+    wall : [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]]
+}
+
+const level_3 = { 
+    startPos : { x: 10, y : 10}, 
+    wall : [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+}
+const level_4 = { 
+    startPos : { x: 5, y : 4}, 
+    wall : [
+    [0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+}
+
+const level_5 = { 
+    startPos : { x: 0, y : 10}, 
+    wall : [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0,  0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0,  0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ,1, 1,  1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0,  0, 0, 0, 0, 0, 0, 0, 0]]
+}
 
 function initPosition() {
     return {
@@ -136,9 +187,38 @@ function draw() {
         if(isPrime(snake1.score)){
             drawImage(ctx, heart1.position.x, heart1.position.y, LIFE_IMAGE);
         }
+        
+        if (LEVEL === 1) {
+            drawLevel(ctx, level_1)
+        }
+        else if (LEVEL === 2) {
+            drawLevel(ctx, level_2)
+        }
+        else if (LEVEL === 3) {
+            drawLevel(ctx, level_3)
+        }
+        else if (LEVEL === 4) {
+            drawLevel(ctx, level_4)
+        }
+        else if (LEVEL === 5) {
+            drawLevel(ctx, level_5)
+        }
     }, REDRAW_INTERVAL);
 }
-
+function drawLevel(ctx, level) {
+    for(let i = 0; i < level.wall.length; i++) {
+        for(let j = 0; j < level.wall[0].length; j++) {
+            if (level.wall[i][j] === 1)
+            {
+                drawCell(ctx,  level.startPos.y + i, level.startPos.x + j, "black");
+                
+            }
+        }
+    }
+}
+function levelUP() {
+    LEVEL += 1;
+}
 function isPrime(num) {
 
      if (num === 2) {
@@ -191,7 +271,7 @@ function eat(snake, apple) {
 function eatlife(snake, heart) {
     if (snake.head.x == heart.position.x && snake.head.y == heart.position.y) {
         heart.position = initPosition();
-        if (NYAWA > 1 && NYAWA < 4){
+        if (NYAWA >= 1 && NYAWA < 4){
             NYAWA += 1;
         }
     }
@@ -236,17 +316,48 @@ function checkCollision(snakes) {
             for (let k = 1; k < snakes[j].body.length; k++) {
                 if (snakes[i].head.x == snakes[j].body[k].x && snakes[i].head.y == snakes[j].body[k].y) {
                     isCollide = true;
+                    break;
                 }
             }
         }
     }
-    if (isCollide) {
-        
-        
+    return isCollide;
+}
+function checkMapCollision (snake, level) {
+    let collide = false;
+    for (let i = 0; i < level.wall.length; i++) {
+        for (let j = 0; j < level.wall[0].length; j++){
+            if (level.wall[i][j] === 1) {
+                if (snake.head.x === level.startPos.y + i && snake.head.y === level.startPos.x + j){
+                    console.log(`${snake.head.x} : ${snake.head.y} == ${level.startPos.x + i} : ${level.startPos.y + j}`)
+                    collide = true;
+                    break;
+                }
+            }
+        }
+    }
+    return collide;
+    
+}
+function collisionWithWall (snake) {
+    let isCollide = false;
+    if (LEVEL === 1) {
+        isCollide = checkMapCollision(snake, level_1);
+    }
+    else if (LEVEL === 2) {
+        isCollide = checkMapCollision(snake, level_2)
+    }
+    else if (LEVEL === 3) {
+        isCollide = checkMapCollision(snake, level_3)
+    }
+    else if (LEVEL === 4) {
+        isCollide = checkMapCollision(snake, level_4)
+    }
+    else if (LEVEL === 5) {
+        isCollide = checkMapCollision(snake, level_5)
     }
     return isCollide;
 }
-
 function move(snake) {
     switch (snake.direction) {
         case DIRECTION.LEFT:
@@ -263,7 +374,7 @@ function move(snake) {
             break;
     }
     moveBody(snake);
-    if (!checkCollision([snake])) {
+    if (!checkCollision([snake]) && !collisionWithWall(snake)) {
         setTimeout(function() {
             move(snake);
         }, MOVE_INTERVAL);
