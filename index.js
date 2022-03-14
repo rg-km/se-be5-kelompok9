@@ -409,6 +409,7 @@ function restartGame() {
     alert('Game Over')
     NYAWA = 4;
     MOVE_INTERVAL = 100;
+    LEVEL = 0;
 }
 function moveBody(snake) {
     snake.body.unshift({ x: snake.head.x, y: snake.head.y });
