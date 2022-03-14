@@ -15,7 +15,7 @@ const LIFE_IMAGE = new Image();
 LIFE_IMAGE.src = "heart.png"
 
 const game_over = new Audio("game-over.mp3");
-
+const level_up = new Audio("levelUp.mp3");
 const life_size = 100;
 const life_count = 4;
 
@@ -218,6 +218,8 @@ function drawLevel(ctx, level) {
 }
 function levelUP() {
     LEVEL += 1;
+    MOVE_INTERVAL -= 10;
+    level_up.play();
 }
 function isPrime(num) {
 
@@ -259,11 +261,10 @@ function eat(snake, apple) {
     if (snake.head.x == apple.position.x && snake.head.y == apple.position.y) {
         apple.position = initPosition();
         
-        if (apple.bonus) {
-            snake.score = snake.score + 5 
-        }
-        else {
-            snake.score++;
+        
+        snake.score++;
+        if (snake.score % 10 == 0){
+            levelUP();
         }
         snake.body.push({x: snake.head.x, y: snake.head.y});
     }
